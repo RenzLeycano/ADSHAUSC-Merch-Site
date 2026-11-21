@@ -73,7 +73,7 @@
                 <th>Price</th>
                 <th>Action</th>
             </tr>
-            <?php for($i = 0; $i < 4; $i++) {?>
+            <?php for($i = 0; $i < 3; $i++) {?>
             <tr>
                 <td>
                     <img src="img/<?=$i + 1?>.png" alt="Merch photo">
@@ -92,6 +92,7 @@
             <?php } ?>
         </table>
 
+        <h2>Merch Logistics</h2>
         <table>
             <tr>
                 <th>Product</th>
