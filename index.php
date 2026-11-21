@@ -6,6 +6,14 @@
         ['name' => 'Lanyard', 'description' => '1 lanyard of your choice', 'price' => 75, 'stock' => 0, 'buy' => 'Buy Now'],
         ['name' => 'Pins', 'description' => '1 pin of your choice', 'price' => 25, 'stock' => 10, 'buy' => 'Buy Now'],
     ];
+    
+    $merch = [
+        'Membership'    => ['price' => 450, 'stock' => 20],
+        'Lanyard'       => ['price' => 75, 'stock' => 0],
+        'Pins'          => ['price' => 25, 'stock' => 10],
+    ];
+
+    $tax = 2;
 
     for ($i = 0; $i < 3; $i++) {
         if ($products[$i]['stock'] <= 0) {
@@ -65,50 +73,43 @@
                 <th>Price</th>
                 <th>Action</th>
             </tr>
-
+            <?php for($i = 0; $i < 4; $i++) {?>
             <tr>
                 <td>
-                    <img src="img/5.png" alt="Membership">
-                    <h3><?= $products[0]['name'];?></h3>
+                    <img src="img/<?=$i + 1?>.png" alt="Merch photo">
+                    <h3><?= $products[$i]['name'];?></h3>
                 </td>
-                <td><?= $products[0]['description'];?> <br><br> 
-                    <span class="strong">
-                        Stock: <?= $products[0]['stock'];?>
-                    </span>
-                </td>
-                <td>₱<?= $products[0]['price'];?></td>
-                <td><a href="#contact" class="buy-button"><?= $products[0]['buy'];?></a></td>
-            </tr>
-
-            <tr>
                 <td>
-                    <img src="img/6.png" alt="Lanyard">
-                    <h3><?= $products[1]['name'];?></h3>
-                </td>
-                <td><?= $products[1]['description'];?> <br><br> 
+                    <?= $products[$i]['description'];?> <br><br> 
                     <span class="strong">
-                        Stock: <?= $products[1]['stock'];?>
+                        Stock: <?= $products[$i]['stock'];?>
                     </span>
                 </td>
-                <td>₱<?= $products[1]['price'];?></td>
-                <td><a href="#contact" class="buy-button"><?= $products[1]['buy'];?></a></td>
-            </tr>
-
-            <tr>
-                <td>
-                    <img src="img/7.png" alt="Pins">
-                    <h3><?= $products[2]['name'];?></h3>
+                <td>₱<?= $products[$i]['price'];?></td>
+                <td><a href="#contact" class="buy-button"><?= $products[$i]['buy'];?></a></td>
                 </td>
-                <td><?= $products[2]['description'];?> <br><br> 
-                    <span class="strong">
-                        Stock: <?= $products[2]['stock'];?>
-                    </span>
-                </td>
-                <td>₱<?= $products[2]['price'];?></td>
-                <td><a href="#contact" class="buy-button"><?= $products[2]['buy'];?></a></td>
             </tr>
+            <?php } ?>
         </table>
 
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Stock</th>
+                <th>Re-Order</th>
+                <th>Total Value</th>
+                <th>Tax Due</th>
+            </tr>
+            <?php foreach ($merch as $product_name => $data) { ?>
+                <tr>
+                    <td><?= $product_name; ?></td>
+                    <td><?= $data['stock']; ?></td>
+                    <td><?= get_reorder_message($data['stock']); ?></td>
+                    <td><?= get_total_value($data['price'], $data['stock']); ?></td>
+                    <td><?= get_tax_due($data['price'], $data['stock'], $tax); ?></td>
+               </tr>
+            <?php } ?>
+        </table>
         <!-- About Section -->
         <section id="about">
             <h2>About Us</h2>
