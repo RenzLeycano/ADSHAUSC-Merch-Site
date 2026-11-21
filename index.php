@@ -1,7 +1,6 @@
 <?php
-
     include 'functions.php';
-    
+
     $products = [
         ['name' => 'Membership', 'description' => '1 lanyard, 1 pin of your choice, 1 sticker bundle of your choice, membership card', 'price' => 450, 'stock' => 20, 'buy' => 'Buy Now'],
         ['name' => 'Lanyard', 'description' => '1 lanyard of your choice', 'price' => 75, 'stock' => 0, 'buy' => 'Buy Now'],
