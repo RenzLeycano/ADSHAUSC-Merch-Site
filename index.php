@@ -1,5 +1,4 @@
 <?php
-    include 'functions.php';
 
     $products = [
         ['name' => 'Membership', 'description' => '1 lanyard, 1 pin of your choice, 1 sticker bundle of your choice, membership card', 'price' => 450, 'stock' => 20, 'buy' => 'Buy Now'],
@@ -85,7 +84,7 @@
                         Stock: <?= $products[$i]['stock'];?>
                     </span>
                 </td>
-                <td>₱<?= $products[$i]['price'];?></td>
+                <td>Php<?= $products[$i]['price'];?></td>
                 <td><a href="#contact" class="buy-button"><?= $products[$i]['buy'];?></a></td>
                 </td>
             </tr>
@@ -101,15 +100,7 @@
                 <th>Total Value</th>
                 <th>Tax Due</th>
             </tr>
-            <?php foreach ($merch as $product_name => $data) { ?>
-                <tr>
-                    <td><?= $product_name; ?></td>
-                    <td><?= $data['stock']; ?></td>
-                    <td><?= get_reorder_message($data['stock']); ?></td>
-                    <td><?= get_total_value($data['price'], $data['stock']); ?></td>
-                    <td><?= get_tax_due($data['price'], $data['stock'], $tax); ?></td>
-               </tr>
-            <?php } ?>
+            <?php include 'functions.php' ?>
         </table>
         <!-- About Section -->
         <section id="about">
